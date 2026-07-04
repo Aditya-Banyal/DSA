@@ -1,5 +1,9 @@
 class Solution {
     public int findMaxLength(int[] nums) {
+        //first make 0's=-1 1 are +1
+        //then sum nikalo prefix
+        //when they repeat and of the max length thats the ans
+        //mp ka -1 key =0
         int ps=0;
         int max=0;
         HashMap<Integer,Integer>mp=new HashMap<>();
