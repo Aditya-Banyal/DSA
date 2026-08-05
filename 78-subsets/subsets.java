@@ -1,22 +1,18 @@
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> ans=new ArrayList<>();
-        List<Integer> temp=new ArrayList<>();
-        sub(nums,0,temp,ans);
-        return ans;
+        List<List<Integer>> list=new ArrayList<>();
+        ArrayList<Integer> temp=new ArrayList<>();
+        subset(nums,temp,0,list);
+        return list;
     }
-        public void sub(int[] nums,int i,List<Integer> temp,List<List<Integer>> ans){//helper fxn
-            
-            if(i==nums.length){
-                ans.add(new ArrayList<>(temp));
-                return;//here the return will start executing from the pop line 
-            }
-            temp.add(nums[i]);//if i<size add to temp
-            sub(nums,i+1,temp,ans);
-
-            temp.remove(temp.size()-1);//if fully traversed all once then pop
-            sub(nums,i+1,temp,ans);//after pop rerun
-
+    public void subset(int[] nums, ArrayList<Integer>temp,int i,List<List<Integer>> list){
+        if(i==nums.length){
+            list.add(new ArrayList<>(temp));
+            return;
         }
-    
+        temp.add(nums[i]);
+        subset(nums,temp,i+1,list);
+        temp.remove(temp.size()-1);
+        subset(nums,temp,i+1,list);
+    }
 }
