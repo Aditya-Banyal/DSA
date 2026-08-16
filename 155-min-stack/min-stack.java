@@ -1,4 +1,4 @@
-class Pair{
+class Pair{//here i have made a class which will have value to be pushed and the least value till that value called min
     int value;
     int min;
     Pair(int value,int min){
@@ -19,7 +19,7 @@ class MinStack {
     
     public void pop() {
         st.pop();
-        if(!st.isEmpty())min=st.peek().min;
+        if(!st.isEmpty())min=st.peek().min;//here i am updating my min var after poping to the peek of stack latest as what if i pop and stack beacomed empty , it is still the old min having
         else{
             min=Integer.MAX_VALUE;
         }
