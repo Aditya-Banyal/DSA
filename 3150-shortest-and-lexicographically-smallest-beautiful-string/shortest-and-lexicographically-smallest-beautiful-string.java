@@ -18,9 +18,8 @@ class Solution {
             int start=list.get(i);
             int end=list.get(i+k-1);
             String temp=s.substring(start,end+1);
-            if(end - start < min ||
+            if(end - start < min ||//if smaller found or lexiographically found
               (end - start == min && temp.compareTo(ans.toString()) < 0)) {
-
                 min = end - start;
                 ans.setLength(0);
                 ans.append(temp);
