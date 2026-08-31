@@ -34,10 +34,6 @@ class Solution {
                 if(arr[0]==-1){//if empty first index
                     arr[0]=cnt;
                 }
-                // else if(cnt-arr[1]<min){
-                //     arr[0]=arr[1];
-                //     arr[1]=cnt;
-                // }
                 //if first filled
                 else{
                     if(arr[1]!=-1){
