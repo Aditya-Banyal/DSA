@@ -13,20 +13,18 @@ class Node {
 */
 class Solution {
     public Node buildTree(List<Integer> nodes) {
-        // code here
         if(nodes==null || nodes.size()==0){
             return null;
         }
-        return buildTree(nodes,0);
-        
+        return fun(nodes,0);
     }
-    public Node buildTree(List<Integer> nodes,int i){
-        if(i>=nodes.size()){
-            return null;
-        } 
-        Node root=new Node(nodes.get(i));
-        root.left=buildTree(nodes,2*i+1);
-        root.right=buildTree(nodes,2*i+2);
-        return root;
+    public Node fun(List<Integer>nodes,int i){
+        if(i>=nodes.size())return null;
+        Node newNode=new Node(nodes.get(i));
+ 
+        newNode.left=fun(nodes,2*i+1);
+        newNode.right=fun(nodes,2*i+2);
+        
+        return newNode;
     }
 }
