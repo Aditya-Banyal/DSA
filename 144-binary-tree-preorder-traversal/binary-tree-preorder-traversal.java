@@ -17,13 +17,17 @@ class Solution {
     public List<Integer> preorderTraversal(TreeNode root) {
         List<Integer>list=new ArrayList<>();
         if(root==null)return list;
-        fun(list,root);
+        Deque<TreeNode>st=new ArrayDeque<>();
+        while(root!=null || !st.isEmpty()){
+            while(root!=null){
+                list.add(root.val);
+                st.push(root);
+                root=root.left;
+            }
+            root=st.pop();
+            root=root.right;
+
+        }
         return list;
-    }
-    public void fun(List<Integer>list,TreeNode root){
-        if(root==null)return;
-        list.add(root.val);
-        fun(list,root.left);
-        fun(list,root.right);
     }
 }
