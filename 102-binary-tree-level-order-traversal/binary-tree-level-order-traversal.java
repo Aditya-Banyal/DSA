@@ -15,19 +15,25 @@
  */
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
-        List<List<Integer>> ans=new ArrayList<>();
-        if(root==null)return ans;
-        traverse(root,ans,0);
-        return ans;
-    }
-    public void traverse(TreeNode curr,List<List<Integer>> ans,int i){
-        if(curr==null)return;
-        if(ans.size()<=i){
-            ans.add(new ArrayList<>());
+        Queue<TreeNode>q=new LinkedList<>();
+        List<List<Integer>>list=new ArrayList<>();
+        q.offer(root);
+        while(!q.isEmpty() && root!=null){
+            int n=q.size();
+            List<Integer>row=new ArrayList<>();
+            for(int i=0;i<n;i++){
+                TreeNode curr=q.peek();
+                row.add(curr.val);
+                if(curr.left!=null)q.offer(curr.left);
+                if(curr.right!=null)q.offer(curr.right);
+                q.poll();
+                // q.offer(peekFirst().left);
+                // q.offer(peekFirst().right);
+                // list.add(root.val);
+                // q.removeFirst();
+            }
+            list.add(row);
         }
-        ans.get(i).add(curr.val);
-        traverse(curr.left,ans,i+1);
-        traverse(curr.right,ans,i+1);
-       
+        return list;
     }
 }
